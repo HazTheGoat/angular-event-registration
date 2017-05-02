@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFire } from 'angularfire2';
+import { ApiService } from './event-registration/services/api.service';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,7 @@ import { AngularFire } from 'angularfire2';
 })
 export class AppComponent {
   title = 'app works!';
-  constructor(af: AngularFire){
-
+  constructor(private __as: ApiService){
+    this.__as.getUser();
   }
 }

@@ -1,12 +1,10 @@
-
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <h2>Events</h2>
   </div>
 </div>
-<div class="row" >
-
-  <div class="col-md-6 col-md-offset-3" *ngFor="let item of eventList | async">
+<div class="row">
+  <div class="col-md-6 col-md-offset-3" *ngFor="let item of eventList | async; let i = index;">
     <div class="demo-card-wide mdl-card mdl-shadow--2dp">
       <div class="mdl-card__title">
         <h2 class="mdl-card__title-text">{{item.name}}</h2>
@@ -15,12 +13,22 @@
         {{item.description}}
       </div>
       <div class="mdl-card__actions mdl-card--border">
-        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" routerLink="/event-page/{{item.eventId}}" routerLinkActive="active">
           Read more
         </a>
-        <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-          Sign me up
+        <span *ngIf="__as.userId; else login">
+          <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" (click)="signUp(item.eventId)" *ngIf="item.responds && item.responds[__as.userId] && !item.responds[__as.userId].attending; else signoff">
+          Attend
         </a>
+          <ng-template #signoff>
+            <a class="mdl-button mdl-js-button mdl-button--raised" (click)="signOff(item.eventId)">
+            Unattend
+          </a>
+          </ng-template>
+        </span>
+        <ng-template #login>
+           Login to signup
+        </ng-template>
       </div>
     </div>
   </div>

@@ -5,7 +5,8 @@
       <div class="mdl-layout-spacer"></div>
       <nav class="mdl-navigation">
         <a class="mdl-navigation__link" routerLink="/event-list" routerLinkActive="active">Events</a>
-        <a class="mdl-navigation__link" routerLink="/login" routerLinkActive="active">My profile</a>
+        <a class="mdl-navigation__link" routerLink="/login" *ngIf="!authState" routerLinkActive="active">Login</a>
+        <a class="mdl-navigation__link" (click)="logOut()" *ngIf="authState">Log out, {{authState.facebook.displayName}}</a>
       </nav>
     </div>
   </header>

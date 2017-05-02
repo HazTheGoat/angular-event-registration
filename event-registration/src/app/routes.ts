@@ -7,7 +7,7 @@ import { LoginComponent } from './event-registration/components/login/login.comp
 
 const appRoutes: Routes = [
   { path: 'event-list', component: EventListComponent },
-  { path: 'event-page', component: EventPageComponent },
+  { path: 'event-page/:id', component: EventPageComponent },
   { path: 'login', component: LoginComponent },
   { path: '', component: EventListComponent }
 ];

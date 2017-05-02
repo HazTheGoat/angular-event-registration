@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { FirebaseListObservable } from 'angularfire2';
+import { AngularFire } from 'angularfire2';
 
 @Component({
   selector: 'app-event-list',
@@ -23,13 +24,21 @@ import { FirebaseListObservable } from 'angularfire2';
 export class EventListComponent implements OnInit {
   eventList: FirebaseListObservable<any>;
 
-  constructor(private __as: ApiService) { }
+  constructor(private __as: ApiService, private af: AngularFire) { }
 
   ngOnInit() {
     this.getEvents();
   }
 
-  getEvents(){
+  getEvents() {
     this.eventList = this.__as.getEvents();
+  }
+
+  signUp(eventId) {
+    this.__as.signUp(eventId);
+  }
+
+  signOff(eventId) {
+    this.__as.signOff(eventId);
   }
 }

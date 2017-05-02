@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFire } from 'angularfire2';
+import { ApiService } from './services/api.service';
 
 @Component({
   selector: 'app-event-registration',
@@ -6,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class EventRegistrationComponent implements OnInit {
-
-  constructor() { }
+  authState;
+  constructor(private af: AngularFire, private __as: ApiService) { }
 
   ngOnInit() {
+    this.af.auth.subscribe(authState => {
+      this.authState = authState;
+      console.log(authState)
+    })
+  }
 
+  logOut(){
+    this.af.auth.logout().then(x => {
+      this.__as.userId = null
+    });
   }
 }
