@@ -9,7 +9,7 @@ import { ApiService } from './services/api.service';
 })
 export class EventRegistrationComponent implements OnInit {
   authState;
-  constructor(private af: AngularFire, private __as: ApiService) { }
+  constructor(private af: AngularFire, public __as: ApiService) { }
 
   ngOnInit() {
     this.af.auth.subscribe(authState => {

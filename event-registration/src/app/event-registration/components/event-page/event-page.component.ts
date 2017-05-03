@@ -56,7 +56,7 @@ export class EventPageComponent implements OnInit {
 
   constructor(
     private af: AngularFire,
-    private __as: ApiService,
+    public __as: ApiService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {

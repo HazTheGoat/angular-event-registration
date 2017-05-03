@@ -24,7 +24,7 @@ import { AngularFire } from 'angularfire2';
 export class EventListComponent implements OnInit {
   eventList: FirebaseListObservable<any>;
 
-  constructor(private __as: ApiService, private af: AngularFire) { }
+  constructor(public __as: ApiService, private af: AngularFire) { }
 
   ngOnInit() {
     this.getEvents();

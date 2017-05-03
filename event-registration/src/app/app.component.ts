@@ -8,7 +8,7 @@ import { ApiService } from './event-registration/services/api.service';
 })
 export class AppComponent {
   title = 'app works!';
-  constructor(private __as: ApiService){
+  constructor(public __as: ApiService){
     this.__as.getUser();
   }
 }
